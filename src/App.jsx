@@ -1,6 +1,5 @@
 import TopBanner from "./components/TopBanner/TopBanner"
 import Header from "./components/Header/Header"
-import Navigation from "./components/Navigation/Navigation"
 import HeroSection from "./components/HeroSection/HeroSection"
 import PopularProducts from "./components/PopularProducts/PopularProducts"
 
@@ -9,7 +8,6 @@ function App() {
     <div className="min-h-screen bg-gray-50">
       <TopBanner />
       <Header />
-      <Navigation />
       <HeroSection />
       <PopularProducts />
     </div>
