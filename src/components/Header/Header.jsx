@@ -4,17 +4,7 @@ function Header() {
       <header className="border-b">
         <div className="max-w-7xl mx-auto px-4">
           {/* Top Header */}
-          <div className="flex justify-between items-center py-2 text-sm text-gray-600">
-            <div></div>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-gray-900">
-                Help Center
-              </a>
-              <a href="#" className="hover:text-gray-900">
-                Order Tracking
-              </a>
-            </div>
-          </div>
+
 
           {/* Main Header */}
           <div className="flex items-center justify-between py-4">

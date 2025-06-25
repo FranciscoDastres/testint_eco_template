@@ -67,61 +67,60 @@ function HeroSection() {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-8">
-      <div className="relative rounded-lg overflow-hidden h-[500px] shadow-lg">
-        {/* Container de slides con efecto de deslizamiento */}
-        <div
-          className="flex transition-transform duration-700 ease-in-out h-full"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {slides.map((slide, index) => (
-            <div key={slide.id} className="w-full flex-shrink-0 h-full">
-              <div
-                className={`${slide.bgColor} h-full flex items-center justify-between px-20 transition-all duration-500`}
-              >
-                {/* Contenido del texto */}
-                <div className="text-white max-w-3xl">
-                  <h1 className="text-6xl font-bold mb-8 transform transition-transform duration-500">
-                    {slide.title}
-                  </h1>
-                  <p className="text-3xl mb-10 opacity-90 transform transition-transform duration-500">
-                    {slide.subtitle}
-                  </p>
-                  <button className="bg-white text-gray-800 px-12 py-5 text-xl rounded-lg font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-300 transform">
-                    {slide.buttonText}
-                  </button>
-                </div>
-
-                {/* Imagen del slide */}
-                <div className="hidden md:block">
-                  <img
-                    src={slide.image || "/placeholder.svg"}
-                    alt={slide.title}
-                    className="w-[450px] h-[350px] object-cover rounded-lg shadow-xl transform transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-              </div>
+<section className="w-full px-0 py-8">
+  <div className="relative w-[90%] mx-auto h-[500px] overflow-hidden rounded-2xl shadow-lg">
+    {/* Container de slides con efecto de deslizamiento */}
+    <div
+      className="flex transition-transform duration-700 ease-in-out h-full"
+      style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+    >
+      {slides.map((slide) => (
+        <div key={slide.id} className="w-full flex-shrink-0 h-full">
+          <div
+            className={`${slide.bgColor} h-full flex items-center justify-between px-4 md:px-20 transition-all duration-500`}
+          >
+            {/* Contenido del texto */}
+            <div className="text-white max-w-3xl px-4">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 md:mb-8 transition-transform duration-500">
+                {slide.title}
+              </h1>
+              <p className="text-xl md:text-3xl mb-6 md:mb-10 opacity-90 transition-transform duration-500">
+                {slide.subtitle}
+              </p>
+              <button className="bg-white text-gray-800 px-8 py-3 md:px-12 md:py-5 text-lg md:text-xl rounded-lg font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-300">
+                {slide.buttonText}
+              </button>
             </div>
-          ))}
+
+            {/* Imagen del slide */}
+            <div className="hidden md:block pr-4">
+              <img
+                src={slide.image || "/placeholder.svg"}
+                alt={slide.title}
+                className="w-[350px] md:w-[450px] h-[300px] md:h-[350px] object-cover rounded-lg shadow-xl transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          </div>
         </div>
+      ))}
+    </div>
 
-        {/* Botón anterior - FLECHA IZQUIERDA */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white text-black w-10 h-10 md:w-12 md:h-12 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center z-10"
-        >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
+    {/* Flechas */}
+    <button
+      onClick={prevSlide}
+      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white text-black w-10 h-10 md:w-12 md:h-12 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center z-10"
+    >
+      <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+    </button>
+    <button
+      onClick={nextSlide}
+      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-black w-10 h-10 md:w-12 md:h-12 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center z-10"
+    >
+      <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+    </button>
+  </div>
+</section>
 
-        {/* Botón siguiente - FLECHA DERECHA */}
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-black w-10 h-10 md:w-12 md:h-12 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center z-10"
-        >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
-      </div>
-    </section>
   );
 }
 

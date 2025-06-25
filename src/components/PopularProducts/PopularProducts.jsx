@@ -1,65 +1,178 @@
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { useRef } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useState } from "react";
 
-const products = [
-  {
-    title: "Men Opaque Casual Shirt",
-    price: "₹1,450.00",
-    oldPrice: "₹1,650.00",
-    image: "/shirt1.png",
-    discount: "10%",
-  },
-  {
-    title: "Men Comfort Cuban Collar",
-    price: "₹1,850.00",
-    oldPrice: "₹2,200.00",
-    image: "/shirt2.png",
-    discount: "14%",
-  },
-  {
-    title: "Men Pure Cotton Striped",
-    price: "₹1,999.00",
-    oldPrice: "₹2,250.00",
-    image: "/shirt3.png",
-    discount: "12%",
-  },
-  {
-    title: "Embroidered Satin Saree",
-    price: "₹4,785.00",
-    oldPrice: "₹5,500.00",
-    image: "/shirt4.png",
-    discount: "13%",
-  },
-  {
-    title: "Embroidered Shirt",
-    price: "₹1,955.00",
-    oldPrice: "₹1,999.00",
-    image: "/shirt5.png",
-    discount: "12%",
-  },
-  {
-    title: "Extra Shirt",
-    price: "₹2,250.00",
-    oldPrice: "₹2,500.00",
-    image: "/shirt6.png",
-    discount: "10%",
-  },
-]
+const data = {
+  fashion: [
+    {
+      title: "fashion Men Opaque Casual Shirt",
+      price: "₹1,450.00",
+      oldPrice: "₹1,650.00",
+      image: "/images/products/fashion/shirt-1.jpg",
+      discount: "10%",
+    },
+    {
+      title: "fashion Men Comfort Cuban Collar",
+      price: "₹1,850.00",
+      oldPrice: "₹2,200.00",
+      image: "/images/products/fashion/shirt-2.jpg",
+      discount: "14%",
+    },
+    {
+      title: "fashion Men Pure Cotton Striped",
+      price: "₹1,999.00",
+      oldPrice: "₹2,250.00",
+      image: "/images/products/fashion/shirt-3.jpg",
+      discount: "12%",
+    },
+    {
+      title: "fashion Embroidered Satin Saree",
+      price: "₹4,785.00",
+      oldPrice: "₹5,500.00",
+      image: "/images/products/fashion/shirt-4.jpg",
+      discount: "13%",
+    },
+  ],
+  electronics: [
+    {
+      title: "electronics Embroidered Shirt",
+      price: "₹1,955.00",
+      oldPrice: "₹1,999.00",
+      image: "/images/products/fashion/shirt-5.jpg",
+      discount: "12%",
+    },
+    {
+      title: "electronics Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-6.jpg",
+      discount: "10%",
+    },
+    {
+      title: "electronics Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-7.jpg",
+      discount: "10%",
+    },
+    {
+      title: "electronics Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-8.jpg",
+      discount: "10%",
+    },
+  ],
+  beauty: [
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-9.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-10.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-11.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-12.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-13.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-14.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-14.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-14.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-14.jpg",
+      discount: "10%",
+    },
+    {
+      title: "beauty Extra Shirt",
+      price: "₹2,250.00",
+      oldPrice: "₹2,500.00",
+      image: "/images/products/fashion/shirt-14.jpg",
+      discount: "10%",
+    },
+  ],
+};
+const categories = Object.keys(data);
 
 function PopularProducts() {
-  const carouselRef = useRef()
+  const carouselRef = useRef();
+  const [activeCategory, setActiveCategory] = useState("fashion");
+  const products = data[activeCategory];
 
   const scroll = (direction) => {
-    const container = carouselRef.current
-    const scrollAmount = 320
+    const container = carouselRef.current;
+    const scrollAmount = 300;
     direction === "left"
       ? (container.scrollLeft -= scrollAmount)
-      : (container.scrollLeft += scrollAmount)
-  }
+      : (container.scrollLeft += scrollAmount);
+  };
 
   return (
     <section className="relative px-6 py-8">
-      <h2 className="text-2xl font-bold mb-4">Popular Products</h2>
+      <h2 className="text-2xl font-bold mb-1">Popular Products</h2>
+      <p className="text-sm text-gray-500 mb-4">
+        Do not miss the current offers until the end of the month.
+      </p>
+
+      {/* Categorías */}
+      <div className="flex gap-6 mb-6 overflow-x-auto">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`uppercase text-sm font-semibold ${
+              activeCategory === cat
+                ? "text-red-500 border-b-2 border-red-500"
+                : "text-gray-500 hover:text-red-400"
+            } pb-1 transition`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
 
       {/* Flecha Izquierda */}
       <button
@@ -109,7 +222,7 @@ function PopularProducts() {
         <ChevronRight />
       </button>
     </section>
-  )
+  );
 }
 
-export default PopularProducts
+export default PopularProducts;
