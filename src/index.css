@@ -5,3 +5,11 @@ html, body, #root {
   margin: 0;
   padding: 0;
 }
+/* Oculta la barra de scroll horizontal */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
