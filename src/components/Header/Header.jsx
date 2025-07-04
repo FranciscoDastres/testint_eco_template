@@ -2,10 +2,7 @@ function Header() {
   return (
     <div className="sticky top-0 z-50 bg-white shadow-sm">
       <header className="border-b">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Top Header */}
-
-
+        <div className="max-w-7xl mx-auto px-4  ">
           {/* Main Header */}
           <div className="flex items-center justify-between py-4">
             {/* Logo */}

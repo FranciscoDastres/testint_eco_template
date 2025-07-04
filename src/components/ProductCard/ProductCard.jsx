@@ -1,21 +1,27 @@
-function ProductCard() {
+import React from 'react';
+
+function ProductCard({ product }) {
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-      <div className="bg-gray-200 h-48 flex items-center justify-center">
-        <svg className="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fillRule="evenodd"
-            d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-            clipRule="evenodd"
-          />
-        </svg>
+    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+      {/* Imagen del producto */}
+      <div className="relative pb-[100%] bg-gray-100 overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
+
+      {/* Contenido del producto */}
       <div className="p-4">
-        <div className="h-4 bg-gray-200 rounded mb-2"></div>
-        <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+        <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-1">{product.name}</h3>
+        <p className="text-blue-600 font-bold">${product.price.toFixed(2)}</p>
+        <button className="mt-3 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
+          Añadir al carrito
+        </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductCard
+export default ProductCard;

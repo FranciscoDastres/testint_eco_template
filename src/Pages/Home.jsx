@@ -5,11 +5,16 @@ import PopularProducts from "../components/PopularProducts/PopularProducts"
 function Home() {
   return (
     <>
-      <HeroSection />
-      <CategoryCards />
-      <PopularProducts />
+      <div className="bg-red-100">
+        <HeroSection />
+        <CategoryCards />
+      </div>
+
+      <div className="bg-gray-200">
+        <PopularProducts />
+      </div>
     </>
-  )
+  );
 }
 
 export default Home
