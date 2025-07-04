@@ -11,6 +11,7 @@ function App() {
         {/* Futuras rutas */}
         <Route path="*" element={<Layout><NotFound /></Layout>} />
       </Routes>
+      <h1 className="text-blue-500 text-4xl font-bold">¡Tailwind funciona!</h1>
     </div>
   )
 }
