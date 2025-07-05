@@ -1,21 +1,27 @@
 function Header() {
   return (
-    <div className="sticky top-0 z-50 bg-white shadow-sm">
+    <div className="sticky top-0 z-50 bg-white shadow-sm border border-gray-300">
       <header className="border-b">
-        <div className="max-w-7xl mx-auto px-4  ">
+        <div className=" px-10 mx-auto px-4  ">
           {/* Main Header */}
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
                     <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                   </svg>
                 </div>
                 <div>
                   <div className="font-bold text-lg">ImpresionArte</div>
-                  <div className="text-xs text-gray-500">Impresiones 3D Personalizadas</div>
+                  <div className="text-xs text-gray-500">
+                    Impresiones 3D Personalizadas
+                  </div>
                 </div>
               </div>
             </div>
@@ -29,7 +35,12 @@ function Header() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50"
                 />
                 <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -51,7 +62,12 @@ function Header() {
                 Register
               </a>
               <button className="p-2">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -61,7 +77,12 @@ function Header() {
                 </svg>
               </button>
               <button className="p-2">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -77,16 +98,36 @@ function Header() {
 
       {/* Navigation */}
       <nav className="border-b">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="px-10 mx-auto px-4">
           <div className="flex items-center justify-between py-3">
             <div className="flex items-center space-x-8">
               <div className="flex items-center space-x-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
                 <span className="font-medium">SHOP BY CATEGORIES</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </div>
               <div className="flex space-x-6">
@@ -120,7 +161,12 @@ function Header() {
               </div>
             </div>
             <div className="flex items-center space-x-2 text-sm">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -134,7 +180,7 @@ function Header() {
         </div>
       </nav>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

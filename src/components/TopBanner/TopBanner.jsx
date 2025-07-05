@@ -1,8 +1,8 @@
 function TopBanner() {
   return (
-    <div className="hidden lg:block bg-white border-y border-gray-200 text-gray-500 text-xs shadow-[0_0_0_1px_black]">
-      <div className="w-full max-w-7xl mx-auto px-0 py-2 flex justify-between items-start ">
-        <p className="font-sans-serif tracking-wide">
+    <div className="hidden lg:block bg-white text-gray-500 text-xs">
+      <div className="w-full mx-auto px-2 py-2 flex justify-between items-start border-t border-t-2 border-gray-400 px-10">
+        <p className="tracking-wide font-sans"> 
           Por lanzamiento recibe un 20% de descuento
         </p>
 
@@ -22,6 +22,5 @@ function TopBanner() {
     </div>
   );
 }
-
 
 export default TopBanner;
