@@ -1,6 +1,4 @@
-"use client";
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function HeroSection() {
@@ -9,24 +7,24 @@ function HeroSection() {
   const slides = [
     {
       id: 1,
-      title: "Summer Collection 2024",
-      subtitle: "Get up to 70% off on trending styles",
-      buttonText: "Shop Now",
-      image: "/placeholder.svg?height=600&width=800&text=Summer+Collection",
+      title: "Shampoo & Soap Essentials",
+      subtitle: "Cuidado personal para toda la familia",
+      buttonText: "Ver Productos",
+      image: "/images/products/domestic/shampoo-and-soap.jpg",
     },
     {
       id: 2,
-      title: "Electronics Sale & Tecnology",
-      subtitle: "Latest gadgets at unbeatable prices",
-      buttonText: "Explore Deals",
-      image: "/placeholder.svg?height=600&width=800&text=Electronics+Sale",
+      title: "Lo Último en Tecnología",
+      subtitle: "Encuentra el iPhone y más al mejor precio",
+      buttonText: "Explorar",
+      image: "/images/products/electronics/iphone.jpg",
     },
     {
       id: 3,
-      title: "Fashion Week Special Winter",
-      subtitle: "Exclusive designer pieces just for you",
-      buttonText: "Discover More",
-      image: "/placeholder.svg?height=600&width=800&text=Fashion+Week",
+      title: "Moda Mujer 2024",
+      subtitle: "Estilo y elegancia para esta temporada",
+      buttonText: "Descubrir",
+      image: "/images/products/fashion/woman-1.jpg",
     },
   ];
 
@@ -35,21 +33,23 @@ function HeroSection() {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(interval);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
+
+  const handleImageError = (e) => {
+    e.target.style.display = 'none';
   };
 
   return (
-    <div
-      className="herosection-wrapper py-6 px-4" // Cambia el padding horizontal aquí (px-4)
-    >
-      <section className="w-full px-0 py-0">
+    <div className="herosection-wrapper py-2 px-4">
+      <section className="w-full px-0">
         <div className="relative w-[95%] mx-auto h-[600px] md:h-[850px] lg:h-[950px] overflow-hidden shadow-lg">
           {/* Slides wrapper */}
           <div
@@ -58,40 +58,60 @@ function HeroSection() {
           >
             {slides.map((slide) => (
               <div key={slide.id} className="w-full flex-shrink-0 h-full">
-                <div className="h-full flex flex-col md:flex-row items-center justify-between px-4 md:px-20 py-6 md:py-0 transition-all duration-500">
-                  <div className="text-gray-800 max-w-3xl px-4 flex-1 flex flex-col justify-center">
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 transition-transform duration-500">
-                      {slide.title}
-                    </h1>
-                    <p className="text-xl md:text-3xl lg:text-4xl mb-6 md:mb-10 opacity-70 transition-transform duration-500">
-                      {slide.subtitle}
-                    </p>
-                    {/* Aquí ajustamos el botón */}
-                    <button
-                      className="bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all duration-300 w-fit mx-auto
-                      px-3 py-1.5 text-sm md:text-base lg:text-lg"
-                      style={{
-                        width: "35%", // botón más pequeño (cambia este porcentaje para agrandar o achicar)
-                        display: "block", // para centrar con margin auto
-                      }}
-                    >
-                      {slide.buttonText}
-                    </button>
-                    {/* -----------------------
-                      PARA AJUSTAR EL ESPACIO ENTRE EL BOTÓN Y EL CONTENIDO DE ARRIBA Y DE ABAJO:
-                      - margin-top del botón: Añade aquí, ej: mt-6 (Tailwind) o style={{ marginTop: '1rem' }}
-                      - margin-bottom o padding-top del siguiente bloque (si hay)
-                      Por ahora el botón no tiene margen top, si quieres agregar:
-                      className="... mt-6 ..." o style={{ marginTop: '1.5rem' }}
-                    ------------------------ */}
+                {/* Grid container para alineación perfecta */}
+                <div className="h-full grid grid-cols-1 md:grid-cols-2 gap-0">
+                  
+                  {/* Columna izquierda - Contenido de texto */}
+                  <div className="flex flex-col justify-center items-center md:items-start px-4 md:px-8 lg:px-12">
+                    <div className="text-gray-800 max-w-lg lg:max-w-xl xl:max-w-2xl">
+                      {/* Título */}
+                      <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 lg:mb-8 transition-transform duration-500 leading-tight text-center md:text-left">
+                        {slide.title}
+                      </h1>
+                      
+                      {/* Subtítulo */}
+                      <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 md:mb-8 lg:mb-10 opacity-70 transition-transform duration-500 leading-relaxed text-center md:text-left">
+                        {slide.subtitle}
+                      </p>
+                      
+                      {/* Botón - siempre en la misma posición */}
+                      <div className="flex justify-center md:justify-start">
+                        <button
+                          className="bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 hover:scale-105 transition-all duration-300 px-6 py-2 md:px-8 md:py-3 text-sm md:text-base lg:text-lg shadow-lg"
+                          style={{
+                            minWidth: "180px",
+                            height: "48px"
+                          }}
+                        >
+                          {slide.buttonText}
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="hidden md:block pr-4 flex-1 flex justify-center items-center">
-                    <img
-                      src={slide.image || "/placeholder.svg"}
-                      className="w-[350px] md:w-[450px] lg:w-[550px] h-[300px] md:h-[350px] lg:h-[450px] object-cover rounded-lg shadow-xl transition-transform duration-500 hover:scale-105"
-                      alt={slide.title}
-                    />
+                  {/* Columna derecha - Imagen */}
+                  <div className="flex justify-center items-center p-4 md:p-8">
+                    <div 
+                      className="flex justify-center items-center bg-gray-50 rounded-lg shadow-xl"
+                      style={{
+                        width: "300px",
+                        height: "300px",
+                        minWidth: "300px",
+                        minHeight: "300px"
+                      }}
+                    >
+                      <img
+                        src={slide.image}
+                        className="w-full h-full object-cover rounded-lg transition-transform duration-500 hover:scale-105"
+                        alt={slide.title}
+                        onError={handleImageError}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover"
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
